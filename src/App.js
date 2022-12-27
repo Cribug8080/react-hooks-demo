@@ -1,7 +1,7 @@
 import { ConfigProvider } from "antd";
 import { RouterProvider } from "react-router";
 import router from "./router";
-import mock from "../mock";
+import mock from "./mock";
 
 import "./styles.css";
 
