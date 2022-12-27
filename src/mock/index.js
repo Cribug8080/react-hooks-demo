@@ -2,25 +2,16 @@ var Mock = require("mockjs");
 
 const { Random } = Mock;
 
-// var data = Mock.mock({
-//   // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
-//   "array|5-10": [
-//     {
-//       // 属性 id 是一个自增数，起始值为 1，每次增 1
-//       "key|+1": 1,
-//       "name|+1": new Array(10).fill(1).map(v => Random.cname()),
-//       age: Random.natural(18, 60),
-//       address: Random.county(true)
-//     }
-//   ]
-// });
+Mock.setup({
+  timeout: "300-800",
+});
 
 Mock.mock(/table.json/, function (options) {
   const list = new Array(15).fill(1).map((v, i) => ({
     key: i,
     name: Random.cname(),
     age: Random.natural(18, 60),
-    address: Random.county(true)
+    address: Random.county(true),
   }));
 
   console.log("options", options);
@@ -29,8 +20,25 @@ Mock.mock(/table.json/, function (options) {
     ...options,
     body: {
       total: 15,
-      list
-    }
+      list,
+    },
+  };
+});
+
+Mock.mock(/infinite.json/, function (options) {
+  const list = new Array(5).fill(1).map((v, i) => ({
+    key: i,
+    name: Random.cname(),
+  }));
+
+  console.log("options", options);
+
+  return {
+    ...options,
+    body: {
+      nextId: 6,
+      list,
+    },
   };
 });
 

@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "./Home";
 import Table from "./Pages/Table";
 import Infinite from "./Pages/Infinite";
+import Virtual from "./Pages/Virtual";
 
 const router = createBrowserRouter([
   {
@@ -11,14 +12,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/table",
-        element: <Table />
+        element: <Table />,
       },
       {
         path: "/infinite",
-        element: <Infinite />
-      }
-    ]
-  }
+        element: <Infinite />,
+      },
+      {
+        path: "/virtual",
+        element: <Virtual />,
+      },
+    ],
+  },
 ]);
 
 export default router;
